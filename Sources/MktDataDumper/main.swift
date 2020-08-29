@@ -22,7 +22,8 @@
 // WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
+import AppKit
+import Foundation
 import SwiftIB
 
 var outputFiles:[FileHandle] = []
@@ -134,8 +135,8 @@ class LoggingWrapper: EWrapper {
 
 var connected = false
 var host = "127.0.0.1"
-var port: UInt32 = 7496
-var tickers:[String] = []
+var port: UInt32 = 4002 //7496
+var tickers:[String] = ["TQQQ"]
 var outputDir: String = FileManager.default.currentDirectoryPath
 let filePrefix = LoggingWrapper.timeToStr(Date(timeIntervalSinceNow: 0), millis:false)
 
@@ -168,7 +169,7 @@ print("Output dir: \(outputDir)")
 print("Symbols to fetch: \(tickers)")
 
 for i in 0 ..< tickers.count {
-    let outf = outputDir.appendingFormat("%@ %@.raw.dump", filePrefix, tickers[i]);
+    let outf = outputDir.appendingFormat("%@ %@.raw.dump.md", filePrefix, tickers[i]);
     var file = FileHandle(forWritingAtPath:outf)
     if file == nil {
         FileManager.default.createFile(atPath: outf, contents: nil, attributes: nil)

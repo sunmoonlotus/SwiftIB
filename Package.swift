@@ -15,6 +15,9 @@ let package = Package(
         .executable(
             name: "HistoryDataDump", 
             targets: ["HistoryDataDump"]),
+        .executable(
+            name: "MktDataDumper",
+            targets: ["MktDataDumper"]),
     ],
     dependencies: [
     ],
@@ -22,6 +25,9 @@ let package = Package(
         .target(
             name: "SwiftIB",
             dependencies: []),
+        .target(
+            name: "MktDataDumper",
+            dependencies: ["SwiftIB"]),
         .target(
             name: "HistoryDataDump",
             dependencies: ["SwiftIB"]),

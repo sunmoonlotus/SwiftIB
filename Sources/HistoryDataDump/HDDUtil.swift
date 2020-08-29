@@ -28,12 +28,12 @@ import Foundation
 struct HDDConfig {
     // default values
     var host = "127.0.0.1"
-    var port: UInt32 = 4001
-    var tickers = [String]()
+    var port: UInt32 = 4002
+    var tickers = ["TQQQ","SQQQ"]//[String]()
     var exchange = "SMART"
     var primaryEx = "ISLAND"
     var rth = 1
-    var barsize = "1 secs"
+    var barsize = "1 secs"//"1 secs"
     var unixts = 1
     var duration = "1800 S" // 3 hours
     var sleepInterval = 10.0
@@ -41,14 +41,14 @@ struct HDDConfig {
     var append = false
     var normal_filename = true
     var dayStart = "000000"
-    var sinceDatetime = ""
-    var untilDatetime = ""
-    var clientID = 1
+    var sinceDatetime = "20200701 00:00:00" //""
+    var untilDatetime = "20200702 00:00:00" //""
+    var clientID = 1 
     var help = false
     
     init(arg_array: [String]) {
-        sinceDatetime = ""
-        untilDatetime = ""
+        sinceDatetime = "20200702 00:00:00" //""
+        untilDatetime = "20200703 00:00:00" //""
 
         var argValue:[Bool] = [Bool](repeating: false, count: arg_array.count)
         var index = 1
@@ -129,6 +129,7 @@ struct HDDConfig {
                     let fileCont = try! String(contentsOfFile: arg_array[index+1], encoding: String.Encoding.utf8)
                     let arr = fileCont.components(separatedBy: "\n")
                     for sym in arr {
+                        print(sym)
                         if !sym.hasPrefix("#") {
                             self.tickers.append(sym)
                         }

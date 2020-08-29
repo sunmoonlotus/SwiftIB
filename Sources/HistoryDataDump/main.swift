@@ -27,7 +27,7 @@ import Foundation
 import SwiftIB
 
 // constants
-let EXT = "history_raw"
+let EXT = "md" //"history_raw"
 let HEADER_LEN = 19
 
 var conf = HDDConfig(arg_array: CommandLine.arguments)
